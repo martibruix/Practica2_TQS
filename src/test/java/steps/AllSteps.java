@@ -229,13 +229,23 @@ public class AllSteps {
 	@Then("the log in option appears")
 	public void theLogInOptionAppears()
 	{
-		driver.findElement(By.id("login2"));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement LogIn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login2")));
+		String message = LogIn.getText();
+		System.out.print("Log in: "+message);
+		Assert.assertTrue(message.contains("Log in"));
+		//driver.findElement(By.id("login2"));
 	}
 	
 	@Then("the sign up option appears")
 	public void theSignUpOptionAppears()
 	{
-		driver.findElement(By.id("signin2"));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement SignUp = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("signin2")));
+		String message = SignUp.getText();
+		System.out.print("Sign up: "+message);
+		Assert.assertTrue(message.contains("Sign up"));
+		//driver.findElement(By.id("signin2"));
 	}
 	
 	@Then("the product detail page appears")
